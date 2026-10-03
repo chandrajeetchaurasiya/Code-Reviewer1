@@ -2,286 +2,84 @@
 
 An AI-powered code review web application that allows developers to submit JavaScript code and receive structured feedback using **Google Gemini 2.5 Flash**.
 
-The project follows a client-server architecture where the React frontend communicates with an Express.js backend, which sends the submitted code to Google Gemini for AI-powered review.
-
----
-
 ## 🚀 Features
 
-* 📝 Interactive JavaScript code editor
-* 🎨 JavaScript syntax highlighting using PrismJS
-* 🤖 AI-powered code review using Google Gemini 2.5 Flash
-* 📋 Structured code review across multiple categories
-* 📖 Markdown-rendered AI responses
-* 🔌 REST API built with Express.js
+* 📝 JavaScript code editor
+* 🎨 Syntax highlighting with PrismJS
+* 🤖 AI-powered code review
+* 📋 Structured feedback
+* 📖 Markdown-rendered responses
+* 🔌 REST API with Express.js
 * ⚡ React + Vite frontend
-* 🌐 Axios-based frontend-backend communication
-* 🔐 Gemini API key stored on the backend using environment variables
-* ❌ Basic input validation and error handling
-
----
+* 🔐 Secure backend API key handling
 
 ## 🛠️ Tech Stack
 
-### Frontend
+**Frontend:** React, Vite, Axios, PrismJS, React Markdown, CSS
 
-* React 19
-* Vite
-* Axios
-* PrismJS
-* React Simple Code Editor
-* React Markdown
-* Rehype Highlight
-* CSS
+**Backend:** Node.js, Express.js, CORS, dotenv
 
-### Backend
+**AI:** Google Gemini 2.5 Flash
 
-* Node.js
-* Express.js
-* CORS
-* dotenv
-* Google Generative AI SDK
-
-### AI Model
-
-* Google Gemini 2.5 Flash
-
----
-
-## 🏗️ Project Architecture
+## 🏗️ Architecture
 
 ```text
-User
-  │
-  ▼
 React Frontend
-  │
-  │ Axios
-  ▼
+      ↓
+Axios
+      ↓
 Express.js Backend
-  │
-  ▼
-AI Controller
-  │
-  ▼
+      ↓
 AI Service
-  │
-  ▼
-Google Gemini 2.5 Flash
-  │
-  ▼
-AI Generated Code Review
-  │
-  ▼
-React Markdown
-  │
-  ▼
-User
+      ↓
+Google Gemini
+      ↓
+Code Review
 ```
 
----
-
-## 📂 Project Structure
-
-```text
-Code-Reviewer1/
-│
-├── Backend/
-│   ├── .gitignore
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── server.js
-│   │
-│   └── src/
-│       ├── app.js
-│       │
-│       ├── controllers/
-│       │   └── ai.controller.js
-│       │
-│       ├── routes/
-│       │   └── ai.routes.js
-│       │
-│       └── services/
-│           └── ai.service.js
-│
-├── Frontend/
-│   ├── .gitignore
-│   ├── package.json
-│   ├── package-lock.json
-│   ├── index.html
-│   ├── eslint.config.js
-│   ├── vite.config.js
-│   │
-│   ├── public/
-│   │   └── vite.svg
-│   │
-│   └── src/
-│       ├── App.jsx
-│       ├── App.css
-│       ├── index.css
-│       ├── main.jsx
-│       │
-│       └── assets/
-│           └── react.svg
-│
-└── README.md
-```
-
----
-
-# ⚙️ How It Works
-
-1. The user enters JavaScript code in the frontend editor.
-2. The React application sends the code to the backend using Axios.
-3. The Express server receives the request through:
-
-```text
-POST /ai/get-review
-```
-
-4. The AI controller validates the submitted code.
-5. The AI service sends the code to **Google Gemini 2.5 Flash**.
-6. Gemini analyzes the code according to the configured review instructions.
-7. The generated review is returned to the frontend.
-8. The frontend displays the response using Markdown rendering and syntax highlighting.
-
----
-
-# 🔍 AI Review Categories
-
-The AI service is configured to review code based on:
-
-1. **Correctness & Bugs**
-2. **Code Quality & Readability**
-3. **Performance & Optimization**
-4. **Security & Reliability**
-5. **Scalability & Maintainability**
-6. **Best Practices & Standards**
-7. **Testing & Documentation**
-8. **Developer Mentorship**
-
-The review also provides:
-
-* Strengths
-* Weaknesses
-* Actionable Recommendations
-
----
-
-# 📋 Prerequisites
-
-Before running the project, make sure you have:
-
-* Node.js installed
-* npm installed
-* A Google Gemini API key
-
----
-
-# 🔧 Installation & Setup
-
-## 1. Clone the Repository
+## ⚙️ Setup
 
 ```bash
 git clone https://github.com/chandrajeetchaurasiya/Code-Reviewer1.git
 cd Code-Reviewer1
 ```
 
----
-
-## 2. Setup Backend
-
-Navigate to the backend directory:
+### Backend
 
 ```bash
 cd Backend
-```
-
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create a `.env` file inside the `Backend` folder:
+Create `.env`:
 
 ```env
 GOOGLE_GEMINI_KEY=your_gemini_api_key
 ```
 
-Start the backend in development mode:
+Start backend:
 
 ```bash
 npm run dev
 ```
-
-The backend runs on:
-
-```text
-http://localhost:3000
-```
-
----
-
-## 3. Setup Frontend
-
-Open a new terminal and navigate to the frontend:
-
-```bash
-cd Frontend
-```
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-You can optionally create a `.env` file:
-
-```env
-VITE_API_URL=http://localhost:3000
-```
-
-Start the frontend:
-
-```bash
-npm run dev
-```
-
-Open the local URL shown by Vite in your browser.
-
----
-
-# 🔑 Environment Variables
-
-### Backend
-
-| Variable            | Required | Description           |
-| ------------------- | -------- | --------------------- |
-| `GOOGLE_GEMINI_KEY` | Yes      | Google Gemini API key |
 
 ### Frontend
 
-| Variable       | Required | Description          |
-| -------------- | -------- | -------------------- |
-| `VITE_API_URL` | No       | Backend API base URL |
+```bash
+cd Frontend
+npm install
+npm run dev
+```
 
-> Never commit your `.env` file or API keys to GitHub.
+Open the Vite URL shown in the terminal.
 
----
+## 🔌 API
 
-# 🔌 API Reference
-
-## Review Code
-
-### Endpoint
-
-```http
+```text
 POST /ai/get-review
 ```
 
-### Request Body
+Request:
 
 ```json
 {
@@ -289,106 +87,23 @@ POST /ai/get-review
 }
 ```
 
-### Response
+## 📌 Current Limitations
 
-The API returns the AI-generated code review as text.
+* JavaScript-focused editor
+* No authentication
+* No database or review history
+* Automated tests not yet implemented
+* Mobile responsiveness can be improved
 
-### Missing Code
+## 🚀 Future Improvements
 
-If no code is provided, the backend returns:
-
-```text
-400 Bad Request
-```
-
-with:
-
-```text
-Prompt is required
-```
-
----
-
-# 🖥️ Usage
-
-1. Start the backend server.
-2. Start the frontend development server.
-3. Open the application in your browser.
-4. Enter JavaScript code in the editor.
-5. Click **Review**.
-6. Wait for the AI-generated analysis.
-7. Read the structured code review on the right side.
-
----
-
-# 🔐 Security Notes
-
-* Gemini API credentials are kept on the backend.
-* `.env` files are excluded through `.gitignore`.
-* Do not place private API keys inside frontend code.
-* Frontend `VITE_` environment variables should not contain secrets because they can be exposed to the client.
-
----
-
-# 📌 Current Limitations
-
-The current implementation has some limitations:
-
-* The editor is currently focused on JavaScript code.
-* No user authentication system is implemented.
-* No database or persistent review history is implemented.
-* Automated tests are not currently included.
-* The backend test script is currently a placeholder.
-* The frontend does not currently show a dedicated loading state while waiting for the AI response.
-* Responsive behavior is not explicitly implemented through a dedicated mobile layout in the current CSS.
-
----
-
-# 🚀 Future Improvements
-
-Possible improvements for future versions:
-
-* Add loading indicators during AI review
-* Disable the Review control while a request is processing
-* Add authentication and user accounts
-* Store previous code reviews
-* Add database integration
-* Add support for multiple programming languages
-* Add automated frontend and backend tests
-* Add API rate limiting
-* Improve API error handling
-* Add code size/input validation
-* Add TypeScript support
-* Improve mobile responsiveness
-* Add review history and downloadable reports
-
----
-
-# 📚 Learning Outcomes
-
-This project provides practical experience with:
-
-* React component development
-* React state management
-* REST API communication
-* Axios
-* Node.js and Express.js
-* Controller-service-route architecture
-* Environment variables
-* Third-party AI API integration
-* Google Gemini
-* Markdown rendering
-* Syntax highlighting
-* Git and GitHub
-* Frontend-backend integration
-
----
-
-# 📄 License
-
-This project uses the **ISC License**, as declared in the backend package configuration.
-
----
+* Authentication
+* Review history
+* Database integration
+* Multiple programming languages
+* Automated testing
+* API rate limiting
+* Mobile responsiveness
 
 ## 👨‍💻 Author
 
@@ -396,7 +111,6 @@ This project uses the **ISC License**, as declared in the backend package config
 
 GitHub: `chandrajeetchaurasiya`
 
----
+## 📄 License
 
-⭐ If you find this project useful, feel free to explore the code and suggest improvements.
-
+ISC License
